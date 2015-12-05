@@ -10,7 +10,9 @@
     tools:context="com.example.c.t01_menu.MainActivity">
 
     <TextView
+        android:id="@+id/myView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#00fff1"
         android:text="Hello World!" />
 </RelativeLayout>
