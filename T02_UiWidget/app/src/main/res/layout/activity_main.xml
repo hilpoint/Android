@@ -60,4 +60,11 @@
         android:layout_below="@+id/myRGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/myButton"
+        android:layout_below="@+id/myEdit"
+        android:text="눌러봐"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
