@@ -19,9 +19,45 @@
         android:textSize="40dp"
         android:typeface="monospace" />
     <CheckBox
+        android:id="@+id/myCheckBox"
         android:layout_alignLeft="@+id/myTextView"
         android:layout_below="@+id/myTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Check"/>
+
+    <RadioGroup
+        android:id="@+id/myRGroup"
+        android:layout_below="@+id/myCheckBox"
+        android:layout_alignLeft="@+id/myCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/myR1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:textSize="20dp"
+            android:text="red"/>
+        <RadioButton
+            android:id="@+id/myR2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#00ff00"
+            android:textSize="20dp"
+            android:text="green"/>
+        <RadioButton
+            android:id="@+id/myR3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0000ff"
+            android:textSize="20dp"
+            android:text="blue"/>
+    </RadioGroup>
+    <EditText
+        android:id="@+id/myEdit"
+        android:layout_below="@+id/myRGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
