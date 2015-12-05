@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    int myRequestCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +22,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 intent.putExtra("id","abc");
-                startActivity(intent);
+                startActivityForResult(intent, myRequestCode);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == myRequestCode) {
+            if(resultCode == RESULT_OK) {
+                String value = data.getStringExtra("myResult");
+                Toast.makeText(getApplicationContext(), value,
+                        Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }
