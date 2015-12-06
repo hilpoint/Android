@@ -12,9 +12,12 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Intent intent = getIntent();
+        Intent intent  = getIntent();
+        String value = intent.getStringExtra("id");
 
-        EditText returnId = (EditText) findViewById(R.id.returnId);
-        returnId.setText(intent.getStringExtra("id"));
+        if (!"".equals(value) && !value.isEmpty()) {
+            EditText returnId = (EditText) findViewById(R.id.returnId);
+            returnId.setText(value);
+        }
     }
 }
