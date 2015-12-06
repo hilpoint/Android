@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/item_icon"
-        android:src="@drawable/ic_movie_black_48dp"
+        android:src="@drawable/ic_folder_black_48dp"
         android:layout_width="48dp"
         android:layout_height="48dp" />
 
