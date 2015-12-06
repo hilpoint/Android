@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -19,5 +20,8 @@ public class Main2Activity extends AppCompatActivity {
             EditText returnId = (EditText) findViewById(R.id.returnId);
             returnId.setText(value);
         }
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(R.drawable.desert);
     }
 }
