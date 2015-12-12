@@ -21,4 +21,12 @@
         android:layout_toRightOf="@+id/btnStart"
         android:text="start2" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:progress="40"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

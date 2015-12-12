@@ -3,15 +3,28 @@ package com.mycompany.t15_mediaplayer;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+    static final int PROGRESS_VALUE = 1;
     MediaPlayer mp = null;
+    ProgressBar progressBar;
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            progressBar.setProgress(msg.arg1);
+        }
+    };
 
     class MyThread extends Thread {
         @Override
@@ -20,10 +33,15 @@ public class MainActivity extends AppCompatActivity {
                 if (mp != null && mp.isPlaying()) {
                     try {
                         sleep(1000);
-                        Log.d("현재재생시간", String.valueOf(mp.getCurrentPosition()));
+                        Message msg = handler.obtainMessage();
+                        msg.what = PROGRESS_VALUE;
+                        msg.arg1 = mp.getCurrentPosition();
+                        handler.sendMessage(msg);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (IllegalStateException e) {
+                        e.printStackTrace();
+                    }  catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
@@ -35,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         MyThread th = new MyThread();
         th.start();
@@ -50,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     mp.setDataSource(path);
                     mp.prepare();
+                    progressBar.setMax(mp.getDuration());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -75,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mp = MediaPlayer.create(MainActivity.this, R.raw.kalimba);
                 mp.start();
+                progressBar.setMax(mp.getDuration());
             }
         });
     }
