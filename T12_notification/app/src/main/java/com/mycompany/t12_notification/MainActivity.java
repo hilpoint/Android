@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setLargeIcon(bm)
                         .setContentIntent(pendingIntent)
+                        .setTicker("Notification test~")
+                        .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
+                        .setVibrate(new long[]{0, 1000})
                         .build();
                 notificationManager.notify(1234, notification);
             }
