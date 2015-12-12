@@ -3,8 +3,6 @@ package com.mycompany.t15_mediaplayer;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,28 +15,13 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mp = null;
     ProgressBar progressBar;
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            progressBar.setProgress(msg.arg1);
-        }
-    };
-
     class MyThread extends Thread {
         @Override
         public  void run() {
             while (true) {
                 if (mp != null && mp.isPlaying()) {
                     try {
-                        sleep(1000);
-                        Message msg = handler.obtainMessage();
-                        msg.what = PROGRESS_VALUE;
-                        msg.arg1 = mp.getCurrentPosition();
-                        handler.sendMessage(msg);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        progressBar.setProgress(mp.getCurrentPosition());
                     } catch (IllegalStateException e) {
                         e.printStackTrace();
                     }  catch (NullPointerException e) {
