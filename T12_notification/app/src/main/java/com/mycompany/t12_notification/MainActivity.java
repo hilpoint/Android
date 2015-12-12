@@ -46,5 +46,26 @@ public class MainActivity extends AppCompatActivity {
                 notificationManager.notify(1234, notification);
             }
         });
+
+        Button btnNoti = (Button) findViewById(R.id.btnNoti);
+        btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.chrysanthemum);
+
+                Notification.Builder builder = new Notification.Builder(MainActivity.this);
+                builder.setSmallIcon(R.mipmap.ic_launcher);
+
+                Notification.BigPictureStyle bigStyle = new Notification.BigPictureStyle(builder);
+                bigStyle.bigPicture(bm);
+                builder.setStyle(bigStyle);
+
+                builder.setAutoCancel(true);
+
+                Notification noti = builder.build();
+                notificationManager.notify(1234, noti);
+
+            }
+        });
     }
 }
