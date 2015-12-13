@@ -16,4 +16,24 @@
         android:text="Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <SeekBar
+        android:progress="30"
+        android:layout_marginTop="24dp"
+        android:id="@+id/seekBar"
+        android:layout_below="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="00:00"
+        android:id="@+id/textPlayTime"
+        android:layout_below="@+id/seekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="99:99"
+        android:id="@+id/textDuration"
+        android:layout_below="@+id/seekBar"
+        android:layout_alignRight="@+id/seekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
