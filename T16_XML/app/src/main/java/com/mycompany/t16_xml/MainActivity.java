@@ -19,6 +19,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    TestSqliteHandler handler;
     class MyXMLTask extends AsyncTask<String, Void, Document>{
 
         private String getElementText(Element dataElement, String tag) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             Element tagElement =  (Element) tagNodeList.item(0);
 
             NodeList tagTextNodeList = tagElement.getChildNodes();
-            return tag + " : " + tagTextNodeList.item(0).getNodeValue();
+            return tagTextNodeList.item(0).getNodeValue();
         }
 
         @Override
@@ -40,12 +41,18 @@ public class MainActivity extends AppCompatActivity {
             for (int i=0; i<nodeList.getLength(); i++){
                 Element dataElement = (Element) nodeList.item(i);
 
-                str += getElementText(dataElement, "day");
-                str += getElementText(dataElement, "hour");
-                str += getElementText(dataElement, "temp");
-                str += getElementText(dataElement, "wfKor");
+                //str += getElementText(dataElement, "day");
+                //str += getElementText(dataElement, "hour");
+                //str += getElementText(dataElement, "temp");
+                //str += getElementText(dataElement, "wfKor");
+
+                handler.insert(getElementText(dataElement, "day"),
+                        getElementText(dataElement, "hour"),
+                        getElementText(dataElement, "temp"),
+                        getElementText(dataElement, "wfKor"));
             }
-            textView.setText(str);
+            //textView.setText(str);
+            handler.selectAll();
         }
 
 
@@ -70,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        handler = new TestSqliteHandler(this);
 
         textView = (TextView) findViewById(R.id.textView);
         Button btnStart = (Button) findViewById(R.id.btnsStart);
