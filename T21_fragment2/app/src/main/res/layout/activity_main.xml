@@ -11,21 +11,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="add"
+        android:onClick="onMyClick"
         android:id="@+id/btnAdd"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="remove"
+        android:onClick="onMyClick"
         android:id="@+id/btnRemove"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="replace"
+        android:onClick="onMyClick"
         android:id="@+id/btnReplace"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="hide"
+        android:onClick="onMyClick"
         android:id="@+id/btnHide"/>
 
     <FrameLayout
