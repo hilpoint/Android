@@ -5,14 +5,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:stretchColumns="*">
+    android:stretchColumns="*"
+    android:id="@+id/tableLayout">
 
-    <TextView android:text="0" android:layout_width="match_parent"
+    <TextView android:text="0"
+        android:layout_width="match_parent"
+        android:id="@+id/selectedTextView"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:gravity="center"
         android:textSize="50sp"/>
     <TextView
+        android:id="@+id/workingTextView"
+        android:background="#555555"
+        android:textColor="#cccccc"
         android:text="0"
         android:layout_width="match_parent"
         android:gravity="center"
@@ -24,17 +30,20 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <Button
+            android:id="@+id/btnZero"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"/>
         <Button
+            android:id="@+id/btnOne"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="0"/>
+            android:text="1"/>
         <Button
+            android:id="@+id/btnApply"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="0"/>
+            android:text="Apply"/>
     </TableRow>
 
 </TableLayout>
