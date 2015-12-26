@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction tr = fm.beginTransaction();
                     MyCounterFragment cf = new MyCounterFragment();
                     tr.add(R.id.frame, cf, "counter");
+                    tr.addToBackStack(null);
                     tr.commit();
                 }
                 break;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         MyCounterFragment cf = new MyCounterFragment();
                         tr.replace(R.id.frame, cf, "counter");
                     }
+                    tr.addToBackStack(null);
                     tr.commit();
                 }
                 break;
