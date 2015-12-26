@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,25 +19,55 @@ public class MainActivity extends AppCompatActivity {
         workingTextView = (TextView) findViewById(R.id.workingTextView);
 
 
-        Button btnApply = (Button) findViewById(R.id.btnApply);
-        btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-            }
-        });
-
         View.OnClickListener numberButtonListener = new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                Button btn = (Button) v;
+                String str = btn.getText().toString();
+                String working = workingTextView.getText().toString();
+                if(working.equals("0")) {
+                    workingTextView.setText(str);
+                }else{
+                    workingTextView.append(str);
+                }
             }
         };
-        Button btnZero = (Button) findViewById(R.id.btnZero);
-        Button btnOne = (Button) findViewById(R.id.btnOne);
 
+        int number = 1;
+        TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+        for(int i=2; i<tableLayout.getChildCount()-1; i++) {
+            TableRow row = (TableRow) tableLayout.getChildAt(i);
+            for(int k=0; k < row.getChildCount(); k++) {
+                Button button = (Button) row.getChildAt(k);
+                button.setText(""+number);
+                number++;
+            }
+        }
+        TableRow row = (TableRow) tableLayout.getChildAt( tableLayout.getChildCount()-1);
+        Button btnDelete = (Button) row.getChildAt(0);
+        btnDelete.setText("DELETE");
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workingTextView.setText("0");
+            }
+        });
+
+        Button btnZero = (Button) row.getChildAt(1);
+        btnZero.setText("0");
         btnZero.setOnClickListener(numberButtonListener);
-        btnOne.setOnClickListener(numberButtonListener);
+
+        Button btnApply = (Button) row.getChildAt(2);
+        btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = workingTextView.getText().toString();
+                if(str.length() > 0) {
+                    selectedTextView.setText(str);
+                }
+                workingTextView.setText("0");
+            }
+        });
     }
 }
