@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             for(int k=0; k < row.getChildCount(); k++) {
                 Button button = (Button) row.getChildAt(k);
                 button.setText(""+number);
+                button.setOnClickListener(numberButtonListener);
                 number++;
             }
         }
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnZero.setOnClickListener(numberButtonListener);
 
         Button btnApply = (Button) row.getChildAt(2);
+        btnApply.setText("APPLY");
         btnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
