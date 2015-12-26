@@ -41,6 +41,7 @@ public class TestSqliteHandler {
     public void selectAll() {
         db = helper.getWritableDatabase();
         Cursor c = db.query("weather",null,null,null,null,null,null);
+
         while (c.moveToNext()) {
             int id = c.getInt(c.getColumnIndex("id"));
             String day = c.getString(c.getColumnIndex("day"));
