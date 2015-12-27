@@ -10,6 +10,15 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -21,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (v.getId()) {
             case R.id.btnAdd:
-                if(fr == null) {
+            {//if(fr == null) {
                     FragmentTransaction tr = fm.beginTransaction();
                     MyCounterFragment cf = new MyCounterFragment();
                     tr.add(R.id.frame, cf, "counter");
