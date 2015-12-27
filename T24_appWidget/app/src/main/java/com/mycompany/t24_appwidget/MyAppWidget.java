@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -19,6 +20,13 @@ public class MyAppWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
          super.onReceive(context, intent);
+
+        if(intent.getAction().equals(ACTION_MYAPPWIDGET_DISPLAY)) {
+            GregorianCalendar now = new GregorianCalendar();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMMM dd");
+            Toast.makeText(context, dateFormat.format(now.getTime()), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
