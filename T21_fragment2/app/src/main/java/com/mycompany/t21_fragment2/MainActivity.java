@@ -18,6 +18,46 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//    이 아래 소스는 백스택 안되.....
+//    public static class CountingFragment extends Fragment {
+//        int mNum;
+//
+//        static CountingFragment newInstance(int num) {
+//            CountingFragment f = new CountingFragment();
+//
+//            Bundle args = new Bundle();
+//            args.putInt("num", num);
+//            f.setArguments(args);
+//            return f;
+//        }
+//        @Override
+//        public void onCreate(Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            mNum = getArguments() != null ? getArguments().getInt("num") : 1;
+//        }
+//
+//        @Nullable
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//            View v = inflater.inflate(R.layout.fragment_counter, container, false);
+//            View tv = v.findViewById(R.id.tvCounter);
+//            ((TextView)tv).setText("Fragment #" + mNum);
+//            return v;
+//        }
+//    }
+//
+//    int mStackLevel = 0;
+//    void addFragmentToStack() {
+//        mStackLevel++;
+//
+//        Fragment newFragment = CountingFragment.newInstance(mStackLevel);
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.replace(R.id.frame, newFragment);
+//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        ft.addToBackStack(null);
+//        ft.commit();
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
